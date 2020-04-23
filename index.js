@@ -292,18 +292,28 @@ class Student extends Lambdasian{
 
   }
 
-  graduate() {
+  graduate(instructor) {
 
-    if (this.grade > 70) {
+    let flex = 0;
 
-      return true;
+    while (this.grade <= 70) {
 
-    }
-    else {
-
-      return false;
+      instructor.changeGrade(this);
+      flex++;
 
     }
+
+    let gradString = this.name + " graduated and they only flexed " + flex + " time";
+
+    if (flex != 1) {
+
+      gradString += "s"
+
+    }
+
+    gradString += "!";
+
+    return gradString; 
     
   }
 
@@ -349,7 +359,21 @@ class ProjectManager extends Instructor {
 
 // Stretch testing:
 
+const student1 = new Student({name: "Dan", 
+                              age: 36, 
+                              location: "Pittsburgh", 
+                              previousBackground: "Everything", 
+                              className: "WEB31", 
+                              favSubjects: ["Everything"]});
 
+const instructor1 = new Instructor({name: "Doug", 
+                                    age: 36, 
+                                    location: "Pittsburgh", 
+                                    specialty: "Grading",
+                                    favLanguage: "COBOL",
+                                    catchPhrase: "If it ain't broke, fix it until it is!"});
+
+console.log(student1.graduate(instructor1));
 
 
 ///////// END OF CHALLENGE /////////
